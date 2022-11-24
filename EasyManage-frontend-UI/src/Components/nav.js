@@ -1,8 +1,8 @@
-import React  from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
 const Nav=()=>{
-    const auth=localStorage.getItem("user");
+    let auth=localStorage.getItem("user")
     return(
         <div>
             <ul className="nav-ul">

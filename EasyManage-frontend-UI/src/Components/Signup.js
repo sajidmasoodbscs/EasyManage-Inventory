@@ -17,6 +17,9 @@ import {useNavigate } from "react-router-dom";
 
 function Signup() {
   const navigate=useNavigate();
+  const [name,setName]=useState("");
+  const [email,setEmail]=useState("");
+  const [password,setPassword]=useState("");
 
   useEffect(()=>{
     const auth=localStorage.getItem("user");
@@ -41,19 +44,17 @@ function Signup() {
   });
 
   const makeid = (length) => {
-    var result = '';
-    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    var charactersLength = characters.length;
-    for ( var i = 0; i < length; i++ ) {
+    let result = '';
+    let characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let charactersLength = characters.length;
+    for ( let i = 0; i < length; i++ ) {
     result += characters.charAt(Math.floor(Math.random() * 
     charactersLength));
     }
     return result;
     }
     
-    const [name,setName]=useState("");
-    const [email,setEmail]=useState("");
-    const [password,setPassword]=useState("");
+    
 
     const signupData=async ()=>{
         let result=await fetch(`http://${process.env.REACT_APP_API_HOST_URL}:${process.env.REACT_APP_API_HOST_PORT}/api/register`,{
