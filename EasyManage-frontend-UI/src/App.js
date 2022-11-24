@@ -11,20 +11,20 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
+      <Nav />
         <Routes>
           <Route element={<PrivateRoute />}>
-          <Route path='/' element={<div><Nav />
-              <h1>Product List</h1></div>} />
-          <Route path='/add' element={<div><Nav />
+          <Route path='/' element={<div><h1>Product List</h1></div>} />
+          <Route path='/add' element={<div>
               <h1>Add Product</h1></div>} />
-          <Route path='/update' element={<div><Nav />
+          <Route path='/update' element={<div>
           <h1>Update Product</h1></div>} />
-          <Route path='/logout' element={<div><Nav />
+          <Route path='/logout' element={<div>
           <h1>Logout</h1></div>} />
-          <Route path='/profile' element={<div><Nav />
+          <Route path='/profile' element={<div>
           <h1>Profile</h1> </div>} />
           </Route>
-          <Route path='/signup' element={<div><Nav /> <Signup /></div>} />
+          <Route path='/signup' element={<div><Signup /></div>} />
         </Routes>
       </BrowserRouter>
       <Footer/>

@@ -14,6 +14,8 @@ import {
 from 'mdb-react-ui-kit';
 import {useNavigate } from "react-router-dom";
   import { toast } from 'react-toastify';
+  import makeid from "../Config/randomtoast";
+
 
 function Signup() {
   const navigate=useNavigate();
@@ -36,25 +38,12 @@ function Signup() {
         draggable: true,
         progress: undefined,
         theme: "colored",
-        toastId: makeid()
+        toastId: makeid.makeid()
         });
       // alert("You are already signedup")
     }
 
   });
-
-  const makeid = (length) => {
-    let result = '';
-    let characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    let charactersLength = characters.length;
-    for ( let i = 0; i < length; i++ ) {
-    result += characters.charAt(Math.floor(Math.random() * 
-    charactersLength));
-    }
-    return result;
-    }
-    
-    
 
     const signupData=async ()=>{
         let result=await fetch(`http://${process.env.REACT_APP_API_HOST_URL}:${process.env.REACT_APP_API_HOST_PORT}/api/register`,{
