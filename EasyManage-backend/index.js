@@ -5,6 +5,10 @@ const Users=require('./models/Users')
 const cors=require('cors')
 const bodyParser=require('body-parser')
 const {log}= require('./config/helper')
+const {login}=require('./controllers/login')
+const {register}=require('./controllers/register')
+
+
 
 
 app.use(cors());
@@ -18,13 +22,8 @@ res.send('App is working')
 });
 
 
-app.post('/api/register',async(req,res)=>{
-const user=new Users(req.body);
-const data=await user.save();
-console.log(data);
-res.send(data);
-})
-
+app.post('/api/register',register);
+app.post('/api/login',login);
 
 const server=process.env.HOST;
 const PORT=process.env.PORT;

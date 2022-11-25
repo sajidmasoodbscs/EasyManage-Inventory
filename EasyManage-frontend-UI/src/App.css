@@ -6,7 +6,7 @@
 .nav-ul {
   margin: 0px;
   padding: 5px;
-  background-color: skyblue;
+  background-color: #3b71ca;
 }
 .nav-ul li a {
   text-decoration: none;
@@ -18,11 +18,32 @@
   bottom: 0;
   width: 100%;
   text-align: center;
-  background-color: skyblue;
+  background-color: #3b71ca;
 }
 .form-outline .form-control{
   padding-top :0.55em;
-  padding-left:2.75em
+  padding-left:3em;
+  padding-right:3em;
+
+}
+
+.divider:after,
+.divider:before {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #eee;
+}
+.h-custom {
+  height: calc(100% - 73px);
+}
+@media (max-width: 450px) {
+  .h-custom {
+  height: 100%;
+  }
+}
+.form-check {
+  padding-right: 10px;
 }
 
 @media (prefers-reduced-motion: no-preference) {

@@ -37,6 +37,8 @@ const Nav=()=>{
                 {/* <li><Link to="/logout">Logout</Link></li>
                 <li><Link to="/signup">SignUp</Link></li> */}
                 <li>{auth?<Link onClick={logout} to="/signup">Logout</Link>:<Link to="/signup">SignUp</Link>}</li>
+                <li><Link to="/login">Login</Link></li>
+
 
             </ul>
         </div>
