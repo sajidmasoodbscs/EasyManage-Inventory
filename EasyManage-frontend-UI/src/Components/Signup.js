@@ -13,7 +13,7 @@ import {
 }
 from 'mdb-react-ui-kit';
 import {useNavigate } from "react-router-dom";
-  import { toast } from 'react-toastify';
+  import { toast,Slide } from 'react-toastify';
   import makeid from "../Config/randomtoast";
 
 
@@ -29,17 +29,18 @@ function Signup() {
       navigate('/');
 
       toast('You are already signedup!', {
-        position: "top-center",
+        position: "top-right",
         type:"error",
-        autoClose: 5000,
+        autoClose: 2000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
         theme: "colored",
-        toastId: makeid.makeid()
-        });
+        transition: Slide,
+        toastId: makeid()
+      });
       // alert("You are already signedup")
     }
 
@@ -59,15 +60,16 @@ function Signup() {
        if(result){
         navigate("/");
         toast('You are signedup Successfully!', {
-          position: "top-center",
+          position: "top-right",
+          autoClose: 2000,
           type:"success",
-          autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
           draggable: true,
           progress: undefined,
           theme: "colored",
+          transition: Slide,
           toastId: makeid()
           });
        } 

@@ -1,7 +1,8 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { toast } from 'react-toastify';
+import { toast,Slide } from 'react-toastify';
 import makeid from "../Config/randomtoast";
+
 
 
 const Nav=()=>{
@@ -11,18 +12,19 @@ const Nav=()=>{
     const logout=()=>{
         localStorage.clear();
         navigate('/');
-        toast('You logged out!', {
-            position: "top-center",
-            type:"error",
-            autoClose: 5000,
+        toast('You are logged out!', {
+            position: "top-right",
+            type:"info",
+            autoClose: 2000,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,
             draggable: true,
             progress: undefined,
             theme: "colored",
+            transition: Slide,
             toastId: makeid()
-            });
+          });
     }
 
     return(
