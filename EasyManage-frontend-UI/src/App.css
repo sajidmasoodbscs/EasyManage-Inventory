@@ -1,4 +1,14 @@
 
+.logo {
+  margin-top: 6px;
+  margin-left: 10px;
+  width: 55px;
+  float: left;
+  border-radius:50%;
+}
+.username {
+  float: right;
+}
 .nav-ul li{
   display: inline-block;
   padding: 10px;
@@ -19,6 +29,12 @@
   width: 100%;
   text-align: center;
   background-color: #3b71ca;
+  padding-top: 10px;
+}
+.footer h3 {
+  text-align: center;
+  color: white;
+  font-size: 14px;
 }
 .form-outline .form-control{
   padding-top :0.55em;
@@ -37,6 +53,7 @@
 .h-custom {
   height: calc(100% - 73px);
 }
+
 @media (max-width: 450px) {
   .h-custom {
   height: 100%;
@@ -45,7 +62,15 @@
 .form-check {
   padding-right: 10px;
 }
-
+.forgot-password{
+  padding-left: 10px;
+}
+li.login-signup a {
+  padding: 15px !important;
+}
+.nav-right{
+  text-align: right;
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

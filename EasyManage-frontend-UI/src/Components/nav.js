@@ -2,6 +2,9 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast,Slide } from 'react-toastify';
 import makeid from "../Config/randomtoast";
+const logo = require('../Assets/images/e-logo.jpeg');
+
+
 
 
 
@@ -29,18 +32,23 @@ const Nav=()=>{
 
     return(
         <div>
-            <ul className="nav-ul">
+         <div className="logdiv">  
+        <img alt="logo" className="logo" src={logo} />
+        </div>
+            {auth?<ul className="nav-ul">
                 <li><Link to="/">Products</Link></li>
                 <li><Link to="/add">Add Product</Link></li>
                 <li><Link to="/update">Update product</Link></li>
                 <li><Link to="/profile">Profile</Link></li>
-                {/* <li><Link to="/logout">Logout</Link></li>
-                <li><Link to="/signup">SignUp</Link></li> */}
-                <li>{auth?<Link onClick={logout} to="/signup">Logout</Link>:<Link to="/signup">SignUp</Link>}</li>
-                <li><Link to="/login">Login</Link></li>
-
+                <li><Link onClick={logout} to="/signup">Logout</Link></li>
+                <li className="username"><Link> Wellcome : {JSON.parse(auth).name}</Link></li>
 
             </ul>
+           : <ul className="nav-ul nav-right"> 
+            <li><Link to="/signup">SignUp</Link></li>
+            <li><Link to="/login">Login</Link></li>
+            </ul>
+}
         </div>
     )
 }

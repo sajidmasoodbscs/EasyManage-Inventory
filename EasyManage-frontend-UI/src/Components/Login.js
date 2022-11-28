@@ -1,4 +1,7 @@
 import React,{useEffect, useState} from 'react';
+import {useNavigate } from "react-router-dom";
+import { toast,Slide } from 'react-toastify';
+import makeid from "../Config/randomtoast";
 import {MDBContainer, 
     MDBCol, 
     MDBRow, 
@@ -16,8 +19,55 @@ function Login() {
     //   });
     const [email,setEmail]=useState("");
     const [password,setPassword]=useState("");
+    const navigate=useNavigate();
 
+    useEffect(()=>{
+        let auth=localStorage.getItem("user");
+        if(auth){
+            navigate("/")
+            toast('You are already logged in!', {
+                position: "top-right",
+                type:"error",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+                transition: Slide,
+                toastId: makeid()
+              }); 
+        }        
+    })
 
+const handlelogin=async()=>{
+   let result=await fetch(`http://${process.env.REACT_APP_API_HOST_URL}:${process.env.REACT_APP_API_HOST_PORT}/api/login`,{
+    method:"post",
+    body:JSON.stringify({email,password}),
+    headers:{
+        "Content-Type":"application/json"
+      }
+   });
+   result=await result.json();
+   if(result.name){
+    localStorage.setItem("user",JSON.stringify(result));
+    navigate('/');
+    toast('You are logged in Successfully!', {
+        position: "top-right",
+        autoClose: 2000,
+        type:"success",
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        transition: Slide,
+        toastId: makeid()
+        });
+   }
+}
   return (
 
 <MDBContainer fluid>
@@ -49,21 +99,21 @@ function Login() {
 </div>
 <div className="d-flex flex-row align-items-center mb-4">
     <MDBIcon fas icon="envelope me-3" size='lg'/>
-    <MDBInput label='Your Email' id='form2' type='email' openOnFocus='true' value={email} onChange={(e)=>setEmail(e.target.value)}/>
+    <MDBInput label='Your Email' id='form2' type='email' openonfocus='true' value={email} onChange={(e)=>setEmail(e.target.value)}/>
 </div>
 
 <div className="d-flex flex-row align-items-center mb-4">
     <MDBIcon fas icon="lock me-3" size='lg'/>
-    <MDBInput label='Password' id='form3' type='password' openOnFocus='true' value={password} onChange={(e)=>setPassword(e.target.value)}/>
+    <MDBInput label='Password' id='form3' type='password' openonfocus='true' value={password} onChange={(e)=>setPassword(e.target.value)}/>
 </div>
 
 <div className="d-flex justify-content-between mb-4">
     <MDBCheckbox name='flexCheck' value='' id='flexCheckDefault' label='Remember me' />
-    <a href="!#" class="forgot-password">Forgot password?</a>
+    <a href="!#" className="forgot-password">Forgot password?</a>
 </div>
 
 <div className='text-center text-md-start mt-4 pt-2'>
-<MDBBtn className="mb-0 px-5" size='lg'>Login</MDBBtn>
+<MDBBtn className="mb-0 px-5" size='lg' onClick={handlelogin}>Login</MDBBtn>
 <p className="small fw-bold mt-2 pt-1 mb-2">Don't have an account? <a href="#!" className="link-danger">Register</a></p>
 </div>
       </MDBCol>
