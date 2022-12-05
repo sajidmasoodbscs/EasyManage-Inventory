@@ -13,6 +13,7 @@ mongoose.connect(CONNECTIONSTR, options)
       console.log(
         'Connected to Database successfully'
       );
+      
     })
     .catch((err) => {
       console.log(

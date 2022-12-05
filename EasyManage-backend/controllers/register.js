@@ -1,5 +1,5 @@
 const db=require('../config/dbconfig')
-const Users=require('../models/Users')
+const Users=require('../models/User')
 
 exports.register=async(req,res)=>{
     const user=new Users(req.body);

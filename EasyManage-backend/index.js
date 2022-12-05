@@ -1,7 +1,6 @@
 const express=require('express')
 const app=express();
 const db=require('./config/dbconfig')
-const Users=require('./models/Users')
 const cors=require('cors')
 const bodyParser=require('body-parser')
 const {log}= require('./config/helper')

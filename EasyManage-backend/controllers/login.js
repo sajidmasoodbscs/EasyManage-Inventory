@@ -1,5 +1,5 @@
 const db=require('../config/dbconfig')
-const Users=require('../models/Users')
+const Users=require('../models/User')
 
 
 exports.login=async(req,res)=>{
